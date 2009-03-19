@@ -157,7 +157,6 @@ public function clearVideoDisplay():void
 
 public function loadPlaylist(xmlFile:String):void
 {
-  Alert.show(xmlFile);
 	application.parameters.playlist = xmlFile;
 	page = 0;
 	currentPosition = 0;
@@ -195,7 +194,6 @@ public function resetApp():void
 
 public function initApp():void
 {
-  Alert.show('coucou')
 	ExternalInterface.addCallback("loadPlaylist", loadPlaylist);
 	ExternalInterface.addCallback("playFilename", playFilename);
 	loadPlaylist(application.parameters.playlist);
