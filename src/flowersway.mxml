@@ -96,7 +96,7 @@
 		id="menu" 
 		bottom="20" 
 		height="120" 
-		width="430"
+		width="330"
 		horizontalCenter="0" 
 		cornerRadius="12"
 		borderStyle="solid"  
@@ -105,7 +105,7 @@
 		verticalScrollPolicy="off"
 		backgroundColor="#4A4444"
 		backgroundAlpha="0.6">
-		<mx:HBox id="thumbsContainer" left="30" right="30" top="10" horizontalAlign="center">
+		<mx:HBox id="thumbsContainer" left="5" right="5" top="10" horizontalAlign="center" horizontalGap="3">
 			<mx:Repeater id="thumbs" dataProvider="{sourceList.toArray().slice(page * 4, (page + 1) * 4)}">
 				<mx:Canvas 
 					backgroundColor="#000000"
@@ -133,7 +133,7 @@
 			</mx:Repeater>
 		</mx:HBox>
 		<mx:Label id="videoName" text="{sources.source[0].name}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="27" fontWeight="normal"/>
-		<mx:HBox bottom="10" horizontalCenter="0" verticalAlign="middle">
+		<mx:HBox bottom="10" horizontalCenter="0" verticalAlign="middle" horizontalGap="2">
 			<mx:Button label="7" width="23" height="23" click="playPrevElement()" themeColor="#0099CC" textRollOverColor="#0099CC" fontSize="15" id="prevButton"/>
 			<mx:Button dataChange="{Alert.show('test')}" id="playButton" label="4" height="23" width="23" fontSize="15" click="clickOnPlayButton()" themeColor="#0099CC" textRollOverColor="#0099CC"/>
 			<mx:Button label="8" width="23" height="23" click="playNextElement()" themeColor="#0099CC" textRollOverColor="#0099CC" fontSize="15" id="nextButton"/>
@@ -145,7 +145,7 @@
 					trackColors="[0xFFFFFF,0xFFFFFF]"
 					labelPlacement="right"
 					label="00:00 / 00:00"
-					width="250" x="0" y="0"
+					width="190" x="0" y="0"
 					fontWeight="normal" fontSize="10"
 					barColor="#FFFFFF"
 				 	fontFamily="Arial"/>
