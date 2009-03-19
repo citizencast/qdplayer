@@ -1,0 +1,29 @@
+<script type="text/javascript" charset="utf-8">
+	function test_reload_playlist()
+	{
+		myPlayer.loadPlaylist("sources2.xml");
+	}
+	
+	function test_play_element()
+	{
+		myPlayer.playFilename("3");
+	}
+</script>
+
+<embed name="myPlayer" src="${swf}.swf" quality="high" bgcolor="${bgcolor}"
+	width="500" height="400" name="${application}" align="middle"
+	play="true"
+	loop="false"
+	quality="high"
+	allowScriptAccess="sameDomain"
+	allowFullScreen="true"
+	type="application/x-shockwave-flash"
+	pluginspage="http://www.adobe.com/go/getflashplayer"
+	flashVars="playlist=sources.xml"
+</embed>
+
+<p>
+<a href="javascript:test_reload_playlist()">Reload Playlist</a>
+<br />
+<a href="javascript:test_play_element()">Play 3</a>
+</p>

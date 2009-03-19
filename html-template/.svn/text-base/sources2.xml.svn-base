@@ -1,0 +1,20 @@
+<sources>
+	<source>
+		<name>La pause café</name>
+		<thumb>thumbs/3.jpg</thumb>
+		<type>Video</type>
+		<file>anecdotes-chaumontoises-768x576</file>
+	</source>
+	<source>
+		<name>Moto Kawasaki</name>
+		<thumb>thumbs/2.jpg</thumb>
+		<type>Image</type>
+		<file>medias/2.jpg</file>
+	</source>
+	<source>
+		<name>Daihatsu Copen Z</name>
+		<thumb>thumbs/4.jpg</thumb>
+		<type>Image</type>
+		<file>medias/4.jpg</file>
+	</source>
+</sources>

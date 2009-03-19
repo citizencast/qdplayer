@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" cornerRadius="5" alpha="1.0" backgroundColor="#000000" width="25" height="25" backgroundAlpha="0.83" borderThickness="0" mouseOver="{myLabel.setStyle('color','0x009dff')}" mouseOut="{myLabel.setStyle('color','white')}">
+
+	<mx:Label text="4" id="myLabel" fontFamily="myFontFamily" color="#FFFFFF" fontSize="15" x="3" y="3"/>
+	
+</mx:Canvas>

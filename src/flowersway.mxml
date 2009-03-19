@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	layout="absolute"
+	backgroundColor="black"
+	applicationComplete="initApp()"
+	mouseMove="onMouseMove(event)"
+	xmlns:ns1="components.*" verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:media="flash.media.*" xmlns:controls="com.cynergysystems.controls.*">
+	<mx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+			import mx.events.IndexChangedEvent;
+			import mx.collections.XMLListCollection;
+			import mx.controls.Text;			
+		]]>
+	</mx:Script>
+
+	<mx:Script source="script.as"/>
+	
+	<mx:Fade
+		id="hideEffect"
+		alphaFrom="1.0"
+		alphaTo="0.0"
+	/>
+	<mx:Fade
+		id="showEffect"
+		alphaFrom="0.0"
+		alphaTo="1.0"
+	/>
+	
+	<mx:DateFormatter id="dateFormater" formatString="NN:SS"/>
+		
+	<mx:Style>
+		@font-face {
+    		src: url("fonts/Webdings.ttf");
+    		fontFamily: myFontFamily;
+    		
+    		advancedAntiAliasing: true;
+		}
+	
+		Alert {
+			font-family: 'Arial';	
+			color: black;
+			font-weight: bold;
+			font-size: 12px;
+			buttonStyleName: alertButton;
+		}
+		
+		.alertButton {
+			font-family: 'Arial';
+		}
+	
+		Button {
+			padding-bottom: 0;
+			padding-left: 0;
+			padding-right: 0;
+			padding-top: 0;
+			font-family: 'myFontFamily';
+			fillColors: #000000, #000000;
+			font-style: normal;
+			font-weight: normal;
+			font-size:10pt;
+			color: #ffffff;
+			fill-alphas: 1, 1;
+		}
+		
+	</mx:Style>
+
+	<mx:VideoDisplay
+		id="videoDisplay"
+		playheadUpdateInterval="100" 
+		complete="videoEnded(event)" 
+		autoPlay="false"
+		ready="videoReadyToPlay(event)" 
+		playheadUpdate="onVideoPlay(event)" 
+		visible="false" 
+		autoBandWidthDetection="false" 
+		width="100%"
+		height="100%">
+	</mx:VideoDisplay>
+	
+	<mx:Image
+		id="image" 
+		visible="false"
+		verticalAlign="middle" 
+		horizontalAlign="center" 
+		width="100%"
+		height="100%"
+		scaleContent="true"
+		complete="imageLoaded(event)"
+	 	horizontalCenter="0" verticalCenter="0"/>
+	
+	<mx:Canvas 
+		showEffect="showEffect"  
+		hideEffect="hideEffect" 
+		id="menu" 
+		bottom="20" 
+		height="120" 
+		width="430"
+		horizontalCenter="0" 
+		cornerRadius="12"
+		borderStyle="solid"  
+		borderThickness="0"
+		horizontalScrollPolicy="off"
+		verticalScrollPolicy="off"
+		backgroundColor="#4A4444"
+		backgroundAlpha="0.6">
+		<mx:HBox id="thumbsContainer" left="30" right="30" top="10" horizontalAlign="center">
+			<mx:Repeater id="thumbs" dataProvider="{sourceList.toArray().slice(page * 4, (page + 1) * 4)}">
+				<mx:Canvas 
+					backgroundColor="#000000"
+					borderStyle="solid"
+					borderThickness="1"
+					height="58"
+					width="77"
+					borderColor="{((thumbs.currentIndex + (4 * page)) == activeSequenceIndex) ? 0x0099cc : 0xFFFFFF}"
+					rollOver="mouseOverThumb(event)"
+					rollOut="mouseOutThumb(event)"
+					click="clickOnElem(event)"
+					useHandCursor="true" buttonMode="true" mouseChildren="false">
+					<mx:Image
+						source="{thumbs.currentItem.thumb}"
+						width="100%"
+						height="100%"
+						horizontalAlign="center"
+						verticalAlign="middle"
+						maintainAspectRatio="true"
+					/>
+					<ns1:PictoPlay verticalCenter="0" horizontalCenter="0" 
+						visible="{(thumbs.currentItem.type == 'Video') ? true : false}" 
+					/>
+				</mx:Canvas>
+			</mx:Repeater>
+		</mx:HBox>
+		<mx:Label id="videoName" text="{sources.source[0].name}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="27" fontWeight="normal"/>
+		<mx:HBox bottom="10" horizontalCenter="0" verticalAlign="middle">
+			<mx:Button label="7" width="23" height="23" click="playPrevElement()" themeColor="#0099CC" textRollOverColor="#0099CC" fontSize="15" id="prevButton"/>
+			<mx:Button dataChange="{Alert.show('test')}" id="playButton" label="4" height="23" width="23" fontSize="15" click="clickOnPlayButton()" themeColor="#0099CC" textRollOverColor="#0099CC"/>
+			<mx:Button label="8" width="23" height="23" click="playNextElement()" themeColor="#0099CC" textRollOverColor="#0099CC" fontSize="15" id="nextButton"/>
+			<mx:Canvas>
+				<mx:ProgressBar
+					disabledColor="0xFFFFFF"
+					id="progressBar"
+					color="white"
+					trackColors="[0xFFFFFF,0xFFFFFF]"
+					labelPlacement="right"
+					label="00:00 / 00:00"
+					width="250" x="0" y="0"
+					fontWeight="normal" fontSize="10"
+					barColor="#FFFFFF"
+				 	fontFamily="Arial"/>
+				<mx:HSlider
+					id="slider"
+					x="-2" y="-3" width="177"
+					value="{currentPosition}"
+					allowTrackClick="false"
+					enabled="false"
+					thumbSkin="@Embed('/assets/slider.gif')"
+					sliderThumbClass="components.MySliderThumb"
+					trackSkin="@Embed('/assets/transparent.gif')"
+					thumbPress="sliderMove(event)"
+					thumbRelease="sliderHasMoved(event)"
+					maximum="{contentLength}"
+				/>
+			</mx:Canvas>
+			<mx:Button id="volume" label="Xð" width="23" height="23" click="clickOnSoundButton()" themeColor="#0099CC" textRollOverColor="#0099CC" textAlign="right" fontSize="11" fontWeight="normal" fontStyle="normal" textDecoration="normal" letterSpacing="-1" leading="1" paddingLeft="2" textIndent="3"/>
+			<mx:Button label="1" width="23" height="23" click="clickOnScreenButton()" themeColor="#0099CC" textRollOverColor="#0099CC"/>
+		</mx:HBox>
+		<mx:Label
+			text="3"
+			fontFamily="myFontFamily"
+			fontSize="21"
+			textAlign="center"
+			color="#FFFFFF"
+			useHandCursor="true" buttonMode="true" mouseChildren="false"
+			rollOver="{event.currentTarget.setStyle('color', '#0099CC')}"
+			rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
+			click="{page = page - 1}"
+			visible="{(page > 0) ? true : false}"
+		 x="0" y="30"/>
+		<mx:Label
+			text="4"
+			fontFamily="myFontFamily"
+			fontSize="21"
+			textAlign="center"
+			color="#FFFFFF"
+			useHandCursor="true" buttonMode="true" mouseChildren="false"
+			rollOver="{event.currentTarget.setStyle('color', '#0099CC')}"
+			rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
+			click="{page = page + 1}"
+			visible="{(sources.source.length() > ((page + 1) * 4)) ? true : false}"
+		 x="393" y="30"/>
+	</mx:Canvas>
+	
+	<mx:Canvas
+		id="bigPictoPlay"
+		useHandCursor="true" buttonMode="true" mouseChildren="false"
+		horizontalScrollPolicy="off" verticalScrollPolicy="off"
+		visible="{playButton.label == '4'}"
+		borderStyle="solid"
+		cornerRadius="10"
+		alpha="1.0"
+		backgroundColor="#000000"
+		verticalCenter="0" horizontalCenter="0"
+		width="50" height="50"
+		backgroundAlpha="0.83"
+		borderThickness="0"
+		click="{clickOnPlayButton()}"
+		mouseOver="{bigPictoLabel.setStyle('color','0x009dff')}"
+		mouseOut="{bigPictoLabel.setStyle('color','white')}"
+	>
+		<mx:Label text="4" id="bigPictoLabel" textAlign="center" fontFamily="myFontFamily" color="#FFFFFF" fontSize="40" verticalCenter="0" horizontalCenter="0"/>
+	</mx:Canvas>
+	
+
+	
+</mx:Application>

@@ -1,0 +1,29 @@
+8
+
+dir
+83
+http://cognard.com/svn/fw/src/fonts
+http://cognard.com/svn
+
+
+
+2008-05-31T20:31:39.079184Z
+83
+
+
+
+svn:special svn:externals svn:needs-lock
+
+webdings.ttf
+file
+
+
+
+
+2008-05-31T13:46:41.000000Z
+2280d6b062b79036a52bd5eae74a17bd
+2008-05-31T20:31:39.079184Z
+83
+
+has-props
+
