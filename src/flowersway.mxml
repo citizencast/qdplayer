@@ -95,7 +95,7 @@
 		hideEffect="hideEffect" 
 		id="menu" 
 		bottom="20" 
-		height="120" 
+		height="111" 
 		width="330"
 		horizontalCenter="0" 
 		cornerRadius="12"
