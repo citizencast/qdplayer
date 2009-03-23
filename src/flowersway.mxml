@@ -176,8 +176,7 @@
 			rollOver="{event.currentTarget.setStyle('color', '#0099CC')}"
 			rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
 			click="{page = page - 1}"
-			visible="{(page > 0) ? true : false}"
-		 x="0" y="30"/>
+		 left="0" y="30"/>
 		<mx:Label
 			text="4"
 			fontFamily="myFontFamily"
@@ -188,8 +187,7 @@
 			rollOver="{event.currentTarget.setStyle('color', '#0099CC')}"
 			rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
 			click="{page = page + 1}"
-			visible="{(sources.source.length() > ((page + 1) * 4)) ? true : false}"
-		 x="393" y="30"/>
+		 right="0" y="30"/>
 	</mx:Canvas>
 	
 	<mx:Canvas
