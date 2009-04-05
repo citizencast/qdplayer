@@ -153,6 +153,7 @@
           id="slider"
           x="-2" y="-3" width="{(progressBar.width - 73)}"
           value="{currentPosition}"
+          showDataTip="false"
           allowTrackClick="false"
           enabled="false"
           thumbSkin="@Embed('/assets/slider.gif')"
