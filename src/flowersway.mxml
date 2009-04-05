@@ -148,10 +148,10 @@
           width="190" x="0" y="0"
           fontWeight="normal" fontSize="10"
           barColor="#FFFFFF"
-           fontFamily="Arial"/>
+          fontFamily="Arial"/>
         <mx:HSlider
           id="slider"
-          x="-2" y="-3" width="177"
+          x="-2" y="-3" width="{(progressBar.width - 73)}"
           value="{currentPosition}"
           allowTrackClick="false"
           enabled="false"
