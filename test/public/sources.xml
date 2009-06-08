@@ -1,39 +1,44 @@
 <sources>
 	<source>
+		<name>Test</name>
+		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
+		<type>Video</type>
+		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
+	</source>
+	<source>
+		<name>Queud</name>
+		<thumb>http://s3.amazonaws.com/encoded-videos/187_55490.jpg</thumb>
+		<type>Video</type>
+		<image>http://s3.amazonaws.com/encoded-videos/187_55490.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Secretaire-Louange.flv</file>
+	</source>
+	<source>
 		<name>Course Poursuite dans PARIS</name>
-		<thumb>thumbs/1.jpg</thumb>
+		<thumb>http://s3.amazonaws.com/encoded-videos/262_35754.jpg</thumb>
 		<type>Video</type>
-		<image>medias/4.jpg</image>
-		<file>chaumont-sur-loire-les-hortensias-bleus</file>
+		<image>http://s3.amazonaws.com/encoded-videos/262_35754.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Fraubert-Rouveyrollis.flv</file>
 	</source>
 	<source>
-		<name>Moto Kawasaki</name>
-		<thumb>thumbs/2.jpg</thumb>
-		<type>Image</type>
-		<file>medias/2.jpg</file>
-	</source>
-	<source>
-		<name>La pause café</name>
-		<thumb>thumbs/3.jpg</thumb>
+		<name>Course Poursuite dans PARIS</name>
+		<thumb>http://s3.amazonaws.com/encoded-videos/163_22591.jpg</thumb>
 		<type>Video</type>
-		<file>azay-le-rideau-association-la-matelote</file>
+		<image>http://s3.amazonaws.com/encoded-videos/163_22591.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Fanny-Judd.flv</file>
 	</source>
 	<source>
-		<name>Daihatsu Copen Z</name>
-		<thumb>thumbs/4.jpg</thumb>
-		<type>Image</type>
-		<file>medias/4.jpg</file>
+		<name>Course Poursuite dans PARIS</name>
+		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
+		<type>Video</type>
+		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
 	</source>
 	<source>
-		<name>Daihatsu Copen Z</name>
-		<thumb>thumbs/4.jpg</thumb>
-		<type>Image</type>
-		<file>medias/4.jpg</file>
-	</source>
-	<source>
-		<name>Daihatsu Copen Z</name>
-		<thumb>thumbs/4.jpg</thumb>
-		<type>Image</type>
-		<file>medias/4.jpg</file>
+		<name>Course Poursuite dans PARIS</name>
+		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
+		<type>Video</type>
+		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
 	</source>
 </sources>

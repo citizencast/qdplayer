@@ -76,7 +76,8 @@
     visible="false" 
     autoBandWidthDetection="false" 
     width="100%"
-    height="100%">
+    height="100%"
+    progress="onVideoLoading(event)">
   </mx:VideoDisplay>
   
   <mx:Image
@@ -113,7 +114,7 @@
           borderThickness="1"
           height="49"
           width="65"
-          borderColor="{((thumbs.currentIndex + (4 * page)) == activeSequenceIndex) ? 0x0099cc : 0xFFFFFF}"
+          borderColor="{((thumbs.currentIndex + (4 * page)) == activeSequenceIndex) ? 0xFF6600 : 0xFFFFFF}"
           rollOver="mouseOverThumb(event)"
           rollOut="mouseOutThumb(event)"
           click="clickOnElem(event)"
@@ -134,38 +135,42 @@
     </mx:HBox>
     <mx:Label id="videoName" text="{sources.source[0].name}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="27" fontWeight="normal"/>
     <mx:HBox bottom="10" horizontalCenter="0" verticalAlign="middle" horizontalGap="2">
-      <mx:Button label="7" width="23" height="23" click="playPrevElement()" themeColor="#0099CC" textRollOverColor="#0099CC" fontSize="15" id="prevButton"/>
-      <mx:Button dataChange="{Alert.show('test')}" id="playButton" label="4" height="23" width="23" fontSize="15" click="clickOnPlayButton()" themeColor="#0099CC" textRollOverColor="#0099CC"/>
-      <mx:Button label="8" width="23" height="23" click="playNextElement()" themeColor="#0099CC" textRollOverColor="#0099CC" fontSize="15" id="nextButton"/>
+      <mx:Button label="7" width="23" height="23" click="playPrevElement()" themeColor="#FF6600" textRollOverColor="#FF6600" fontSize="15" id="prevButton"/>
+      <mx:Button dataChange="{Alert.show('test')}" id="playButton" label="4" height="23" width="23" fontSize="15" click="clickOnPlayButton()" themeColor="#FF6600" textRollOverColor="#FF6600"/>
+      <mx:Button label="8" width="23" height="23" click="playNextElement()" themeColor="#FF6600" textRollOverColor="#FF6600" fontSize="15" id="nextButton"/>
       <mx:Canvas>
         <mx:ProgressBar
           disabledColor="0xFFFFFF"
           id="progressBar"
-          color="white"
-          trackColors="[0xFFFFFF,0xFFFFFF]"
+          color="#FFFFFF"
+          trackColors="[0xCCCCCC,0xCCCCCC]"
           labelPlacement="right"
           label="00:00 / 00:00"
           width="190" x="0" y="0"
           fontWeight="normal" fontSize="10"
-          barColor="#FFFFFF"
-          fontFamily="Arial"/>
+          fontFamily="Arial"
+          mode="manual"
+          barColor="#FFFFFF"/>
         <mx:HSlider
+          useHandCursor="true" buttonMode="true" mouseChildren="true"
           id="slider"
           x="-2" y="-3" width="{(progressBar.width - 73)}"
           value="{currentPosition}"
           showDataTip="false"
-          allowTrackClick="false"
+          allowTrackClick="true"
           enabled="false"
           thumbSkin="@Embed('/assets/slider.gif')"
+          thumbOverSkin="@Embed('/assets/slider_over.gif')"
           sliderThumbClass="components.MySliderThumb"
           trackSkin="@Embed('/assets/transparent.gif')"
           thumbPress="sliderMove(event)"
           thumbRelease="sliderHasMoved(event)"
+          change="sliderHasMoved(event)"
           maximum="{contentLength}"
         />
       </mx:Canvas>
-      <mx:Button id="volume" label="Xð" width="23" height="23" click="clickOnSoundButton()" themeColor="#0099CC" textRollOverColor="#0099CC" textAlign="right" fontSize="11" fontWeight="normal" fontStyle="normal" textDecoration="normal" letterSpacing="-1" leading="1" paddingLeft="2" textIndent="3"/>
-      <mx:Button label="1" width="23" height="23" click="clickOnScreenButton()" themeColor="#0099CC" textRollOverColor="#0099CC"/>
+      <mx:Button id="volume" label="Xð" width="23" height="23" click="clickOnSoundButton()" themeColor="#FF6600" textRollOverColor="#FF6600" textAlign="right" fontSize="11" fontWeight="normal" fontStyle="normal" textDecoration="normal" letterSpacing="-1" leading="1" paddingLeft="2" textIndent="3"/>
+      <mx:Button label="1" width="23" height="23" click="clickOnScreenButton()" themeColor="#FF6600" textRollOverColor="#FF6600"/>
     </mx:HBox>
     <mx:Label
       text="3"
@@ -174,7 +179,7 @@
       textAlign="center"
       color="#FFFFFF"
       useHandCursor="true" buttonMode="true" mouseChildren="false"
-      rollOver="{event.currentTarget.setStyle('color', '#0099CC')}"
+      rollOver="{event.currentTarget.setStyle('color', '#FF6600')}"
       rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
       click="{page = page - 1}"
       visible="{(page > 0) ? true : false}"
@@ -186,7 +191,7 @@
       textAlign="center"
       color="#FFFFFF"
       useHandCursor="true" buttonMode="true" mouseChildren="false"
-      rollOver="{event.currentTarget.setStyle('color', '#0099CC')}"
+      rollOver="{event.currentTarget.setStyle('color', '#FF6600')}"
       rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
       click="{page = page + 1}"
       visible="{(sources.source.length() > ((page + 1) * 4)) ? true : false}"
@@ -207,12 +212,10 @@
     backgroundAlpha="0.83"
     borderThickness="0"
     click="{clickOnPlayButton()}"
-    mouseOver="{bigPictoLabel.setStyle('color','0x009dff')}"
+    mouseOver="{bigPictoLabel.setStyle('color','0xFF6600')}"
     mouseOut="{bigPictoLabel.setStyle('color','white')}"
   >
     <mx:Label text="4" id="bigPictoLabel" textAlign="center" fontFamily="myFontFamily" color="#FFFFFF" fontSize="40" verticalCenter="0" horizontalCenter="0"/>
   </mx:Canvas>
-  
-
   
 </mx:Application>
