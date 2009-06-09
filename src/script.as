@@ -65,6 +65,25 @@ public function mouserOverMenu(event:MouseEvent):void
   mouseTimer.reset();
 }
 
+public function clickOnContent(event:MouseEvent):void
+{
+  if (sources.source[activeSequenceIndex].type == "Video")
+  {
+    slider.enabled = true;
+    if (videoDisplay.playing) {
+      videoDisplay.pause();
+      playButton.label = "4"
+    }
+  }
+  else 
+  {
+    if (timer.running) {
+      timer.stop();
+      playButton.label = "4"
+    }
+  }
+}
+
 public function onMouseMove(event:MouseEvent):void
 {
   showMenu();  

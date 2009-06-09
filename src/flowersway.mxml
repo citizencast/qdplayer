@@ -69,6 +69,7 @@
   <mx:VideoDisplay
     id="videoDisplay"
     mouseMove="onMouseMove(event)"
+    click="clickOnContent(event)"
     playheadUpdateInterval="100" 
     complete="videoEnded(event)" 
     autoPlay="false"
@@ -84,6 +85,7 @@
   <mx:Image
     id="image"
     mouseMove="onMouseMove(event)"
+    click="clickOnContent(event)"
     visible="false"
     verticalAlign="middle" 
     horizontalAlign="center" 
@@ -91,14 +93,14 @@
     height="100%"
     scaleContent="true"
     complete="imageLoaded(event)"
-     horizontalCenter="0" verticalCenter="0"/>
+    horizontalCenter="0" verticalCenter="0"/>
   
   <mx:Canvas 
     showEffect="showEffect"  
     hideEffect="hideEffect" 
     id="menu" 
     bottom="5" 
-    height="118" 
+    height="115" 
     width="335"
     rollOver="mouserOverMenu(event)"
     horizontalCenter="0" 
@@ -109,7 +111,7 @@
     verticalScrollPolicy="off"
     backgroundColor="#4A4444"
     backgroundAlpha="0.6">
-    <mx:HBox id="thumbsContainer" left="5" right="5" top="10" horizontalAlign="center" horizontalGap="3">
+    <mx:HBox id="thumbsContainer" left="5" right="5" top="5" horizontalAlign="center" horizontalGap="3">
       <mx:Repeater id="thumbs" dataProvider="{sourceList.toArray().slice(page * 4, (page + 1) * 4)}">
         <mx:Canvas 
           backgroundColor="#000000"
@@ -138,7 +140,7 @@
     </mx:HBox>
     <mx:Label id="videoName" text="{sources.source[0].name}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="40" fontWeight="normal"/>
     <mx:Label id="videoDescription" text="{sources.source[0].description}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="27" fontWeight="normal"/>
-    <mx:HBox bottom="10" horizontalCenter="0" verticalAlign="middle" horizontalGap="2">
+    <mx:HBox bottom="5" horizontalCenter="0" verticalAlign="middle" horizontalGap="2">
       <mx:Button label="7" width="23" height="23" click="playPrevElement()" themeColor="#FF6600" textRollOverColor="#FF6600" fontSize="15" id="prevButton"/>
       <mx:Button dataChange="{Alert.show('test')}" id="playButton" label="4" height="23" width="23" fontSize="15" click="clickOnPlayButton()" themeColor="#FF6600" textRollOverColor="#FF6600"/>
       <mx:Button label="8" width="23" height="23" click="playNextElement()" themeColor="#FF6600" textRollOverColor="#FF6600" fontSize="15" id="nextButton"/>
@@ -187,7 +189,7 @@
       rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
       click="{page = page - 1}"
       visible="{(page > 0) ? true : false}"
-      left="0" y="25"/>
+      left="0" y="17"/>
     <mx:Label
       text="4"
       fontFamily="myFontFamily"
@@ -199,7 +201,7 @@
       rollOut="{event.currentTarget.setStyle('color', '#ffffff')}"
       click="{page = page + 1}"
       visible="{(sources.source.length() > ((page + 1) * 4)) ? true : false}"
-      right="0" y="25"/>
+      right="0" y="17"/>
   </mx:Canvas>
   
   <mx:Canvas
@@ -211,7 +213,7 @@
     cornerRadius="10"
     alpha="1.0"
     backgroundColor="#000000"
-    verticalCenter="-25" horizontalCenter="0"
+    verticalCenter="-20" horizontalCenter="0"
     width="50" height="50"
     backgroundAlpha="0.83"
     borderThickness="0"
