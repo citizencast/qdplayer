@@ -60,6 +60,11 @@ public function imageWidth():uint
     return (Application.application.width);
 }
 
+public function mouserOverMenu(event:MouseEvent):void
+{
+  mouseTimer.reset();
+}
+
 public function onMouseMove(event:MouseEvent):void
 {
   showMenu();  
@@ -183,7 +188,7 @@ public function loadPlaylist(xmlFile:String):void
   }
   
   showMenu();
-  mouseTimer = new Timer(4000, 1);
+  mouseTimer = new Timer(1000, 1);
   mouseTimer.addEventListener(TimerEvent.TIMER_COMPLETE, mouseTimerEnd);
   mouseTimer.start();
 }
@@ -452,18 +457,25 @@ public function playImage(imageFile:String, was_stopped:Boolean = false):void
   progressBar.label = "00:00 / 00:00";
 }
 
+public function mouseOut(e:MouseEvent):void
+{
+  hideMenu();
+}
+
 public function mouseOverThumb(e:MouseEvent):void
 {
   e.currentTarget.setStyle('borderColor', 0xFF6600);
-  var data:XML = sources.source[e.currentTarget.repeaterIndex];
-  videoName.text = data.name;  
+  var data:XML = sources.source[e.currentTarget.repeaterIndex + 4 * page];
+  videoName.text = data.name;
+  videoDescription.text = data.description;
 }
 
 public function mouseOutThumb(e:MouseEvent):void
 {
   e.currentTarget.setStyle('borderColor', (e.currentTarget.repeaterIndex + 4 * page == activeSequenceIndex) ? 0xFF6600 : 0xFFFFFF);
   var data:XML = sources.source[activeSequenceIndex];
-  videoName.text = data.name;  
+  videoName.text = data.name;
+  videoDescription.text = data.description;
 }
 
 public function clickOnScreenButton():void

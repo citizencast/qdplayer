@@ -4,7 +4,7 @@
   layout="absolute"
   backgroundColor="black"
   applicationComplete="initApp()"
-  mouseMove="onMouseMove(event)"
+  rollOut="mouseOut(event)"
   xmlns:ns1="components.*" verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:media="flash.media.*" xmlns:controls="com.cynergysystems.controls.*">
   <mx:Script>
     <![CDATA[
@@ -68,6 +68,7 @@
 
   <mx:VideoDisplay
     id="videoDisplay"
+    mouseMove="onMouseMove(event)"
     playheadUpdateInterval="100" 
     complete="videoEnded(event)" 
     autoPlay="false"
@@ -81,7 +82,8 @@
   </mx:VideoDisplay>
   
   <mx:Image
-    id="image" 
+    id="image"
+    mouseMove="onMouseMove(event)"
     visible="false"
     verticalAlign="middle" 
     horizontalAlign="center" 
@@ -96,8 +98,9 @@
     hideEffect="hideEffect" 
     id="menu" 
     bottom="5" 
-    height="111" 
-    width="330"
+    height="118" 
+    width="335"
+    rollOver="mouserOverMenu(event)"
     horizontalCenter="0" 
     cornerRadius="12"
     borderStyle="solid"  
@@ -133,7 +136,8 @@
         </mx:Canvas>
       </mx:Repeater>
     </mx:HBox>
-    <mx:Label id="videoName" text="{sources.source[0].name}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="27" fontWeight="normal"/>
+    <mx:Label id="videoName" text="{sources.source[0].name}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="40" fontWeight="normal"/>
+    <mx:Label id="videoDescription" text="{sources.source[0].description}" horizontalCenter="0" color="white" fontFamily="Arial" fontSize="12" bottom="27" fontWeight="normal"/>
     <mx:HBox bottom="10" horizontalCenter="0" verticalAlign="middle" horizontalGap="2">
       <mx:Button label="7" width="23" height="23" click="playPrevElement()" themeColor="#FF6600" textRollOverColor="#FF6600" fontSize="15" id="prevButton"/>
       <mx:Button dataChange="{Alert.show('test')}" id="playButton" label="4" height="23" width="23" fontSize="15" click="clickOnPlayButton()" themeColor="#FF6600" textRollOverColor="#FF6600"/>
@@ -207,7 +211,7 @@
     cornerRadius="10"
     alpha="1.0"
     backgroundColor="#000000"
-    verticalCenter="-20" horizontalCenter="0"
+    verticalCenter="-25" horizontalCenter="0"
     width="50" height="50"
     backgroundAlpha="0.83"
     borderThickness="0"
