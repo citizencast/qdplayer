@@ -38,6 +38,7 @@ public var page:uint = 0;
 
 public var mouseTimer:Timer;
 public var timer:MyTimer;
+public var cursorTimer:Timer
 
 
 [Bindable(event="imageChange")]
@@ -60,9 +61,15 @@ public function imageWidth():uint
     return (Application.application.width);
 }
 
-public function mouserOverMenu(event:MouseEvent):void
+public function mouseOverMenu(event:MouseEvent):void
 {
   mouseTimer.reset();
+  cursorTimer.reset();
+}
+
+public function mouseOutMenu(event:MouseEvent):void
+{
+  mouseTimer.start();
 }
 
 public function clickOnContent(event:MouseEvent):void
@@ -86,9 +93,12 @@ public function clickOnContent(event:MouseEvent):void
 
 public function onMouseMove(event:MouseEvent):void
 {
-  showMenu();  
+  showMenu();
   mouseTimer.reset();
   mouseTimer.start();
+  Mouse.show();
+  cursorTimer.reset();
+  cursorTimer.start();
 }
 
 private function fullScreenHandler(evt:FullScreenEvent):void
@@ -102,6 +112,11 @@ private function fullScreenHandler(evt:FullScreenEvent):void
 public function mouseTimerEnd(event:TimerEvent):void
 {
   hideMenu();
+}
+
+public function cursorTimerEnd(event:TimerEvent):void
+{
+  Mouse.hide();
 }
 
 public var images:Object;
@@ -209,7 +224,8 @@ public function loadPlaylist(xmlFile:String):void
   showMenu();
   mouseTimer = new Timer(1000, 1);
   mouseTimer.addEventListener(TimerEvent.TIMER_COMPLETE, mouseTimerEnd);
-  mouseTimer.start();
+  cursorTimer = new Timer(3000, 1);
+  cursorTimer.addEventListener(TimerEvent.TIMER_COMPLETE, cursorTimerEnd);
 }
 
 public function resetApp():void
@@ -474,11 +490,6 @@ public function playImage(imageFile:String, was_stopped:Boolean = false):void
   contentLength = image_ticks;
   
   progressBar.label = "00:00 / 00:00";
-}
-
-public function mouseOut(e:MouseEvent):void
-{
-  hideMenu();
 }
 
 public function mouseOverThumb(e:MouseEvent):void

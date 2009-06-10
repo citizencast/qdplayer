@@ -4,7 +4,6 @@
   layout="absolute"
   backgroundColor="black"
   applicationComplete="initApp()"
-  rollOut="mouseOut(event)"
   xmlns:ns1="components.*" verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:media="flash.media.*" xmlns:controls="com.cynergysystems.controls.*">
   <mx:Script>
     <![CDATA[
@@ -102,7 +101,8 @@
     bottom="5" 
     height="115" 
     width="335"
-    rollOver="mouserOverMenu(event)"
+    rollOver="mouseOverMenu(event)"
+    rollOut="mouseOutMenu(event)"
     horizontalCenter="0" 
     cornerRadius="12"
     borderStyle="solid"  
@@ -131,9 +131,6 @@
             horizontalAlign="center"
             verticalAlign="middle"
             maintainAspectRatio="true"
-          />
-          <ns1:PictoPlay verticalCenter="0" horizontalCenter="0" 
-            visible="{(thumbs.currentItem.type == 'Video') ? true : false}" 
           />
         </mx:Canvas>
       </mx:Repeater>
