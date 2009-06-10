@@ -476,11 +476,6 @@ public function playImage(imageFile:String, was_stopped:Boolean = false):void
   progressBar.label = "00:00 / 00:00";
 }
 
-public function mouseOut(e:MouseEvent):void
-{
-  hideMenu();
-}
-
 public function mouseOverThumb(e:MouseEvent):void
 {
   e.currentTarget.setStyle('borderColor', 0xFF6600);
