@@ -30,11 +30,12 @@
   <mx:DateFormatter id="dateFormater" formatString="NN:SS"/>
     
   <mx:Style>
+	@namespace "http://www.adobe.com/2006/mxml";
     @font-face {
         src: url("fonts/Webdings.ttf");
         fontFamily: myFontFamily;
-        
         advancedAntiAliasing: true;
+        embedAsCFF: false;
     }
   
     Alert {
@@ -172,7 +173,7 @@
           maximum="{contentLength}"
         />
       </mx:Canvas>
-      <mx:Button id="volume" label="Xð" width="23" height="23" click="clickOnSoundButton()" themeColor="#FF6600" textRollOverColor="#FF6600" textAlign="right" fontSize="11" fontWeight="normal" fontStyle="normal" textDecoration="normal" letterSpacing="-1" leading="1" paddingLeft="2" textIndent="3"/>
+      <mx:Button id="volume" label="Xð" width="23" height="23" click="clickOnSoundButton()" themeColor="#FF6600" textRollOverColor="#FF6600" textAlign="right" fontSize="11" fontWeight="normal" fontStyle="normal" textDecoration="none" letterSpacing="-1" leading="1" paddingLeft="2" textIndent="3"/>
       <mx:Button label="1" width="23" height="23" click="clickOnScreenButton()" themeColor="#FF6600" textRollOverColor="#FF6600"/>
     </mx:HBox>
     <mx:Label
