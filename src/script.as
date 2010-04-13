@@ -162,12 +162,16 @@ private function xmlLoaded(e:Event):void
   activeSequenceIndex = randNum;
   if (activeSequenceIndex >= ((page + 1) * 4))
   {
-    page = page + 1;
+    var numPage = activeSequenceIndex / 4;
+    if ((numPage % 4) != 0 ) {
+      page = numPage;
+    }
+    else {
+     page = numPage + 1; 
+    }
   }
-  else if (activeSequenceIndex < (page * 4))
-  {
-    page = page - 1;
-  }
+
+
   if (sources.source[randNum].type == 'Video')
   {
     videoDisplay.source = sources.source[randNum].file;
