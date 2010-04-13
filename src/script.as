@@ -127,6 +127,19 @@ private function test(e:flash.events.Event):void
   images[loader.name] = loader.content;
 }
 
+private function generateRandomNumber( start:Number, end:Number ):Number
+{
+    var randomNum:Number;
+    if( end == 1 )
+    {
+        randomNum = Math.random();
+    }
+    else{
+        randomNum = Math.round( Math.random() * end );
+    }
+    return (randomNum);
+}
+
 private function xmlLoaded(e:Event):void
 {
   sources = XML(e.target.data);
@@ -144,19 +157,28 @@ private function xmlLoaded(e:Event):void
       loader.contentLoaderInfo.addEventListener(Event.COMPLETE, test);
     }
   }
-  
-  // Affichage de la premiere image du premier media
-  if (sources.source[0].type == 'Video')
+
+  var randNum = generateRandomNumber(0, sources.source.length() - 1);
+  activeSequenceIndex = randNum;
+  if (activeSequenceIndex >= ((page + 1) * 4))
   {
-    videoDisplay.source = sources.source[0].file;
-    if (sources.source[0].hasOwnProperty('image'))
-      image.source = sources.source[0].image;
+    page = page + 1;
+  }
+  else if (activeSequenceIndex < (page * 4))
+  {
+    page = page - 1;
+  }
+  if (sources.source[randNum].type == 'Video')
+  {
+    videoDisplay.source = sources.source[randNum].file;
+    if (sources.source[randNum].hasOwnProperty('image'))
+      image.source = sources.source[randNum].image;
     else
-      image.source = sources.source[0].thumb;
+      image.source = sources.source[randNum].thumb;
   }
   else
   {
-    image.source = sources.source[0].file;
+    image.source = sources.source[randNum].file;
     timer = new MyTimer(image_timer, image_ticks, activeSequenceIndex);
     timer.addEventListener(TimerEvent.TIMER_COMPLETE, imageEnded);
     timer.addEventListener(TimerEvent.TIMER, onImagePlay);

@@ -8,6 +8,22 @@
 		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
 	</source>
 	<source>
+		<name>Course Poursuite dans PARIS 2</name>
+		<description>Description 4</description>
+		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
+		<type>Video</type>
+		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
+	</source>
+	<source>
+		<name>Course Poursuite dans PARIS 3</name>
+		<description>Description 5</description>
+		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
+		<type>Video</type>
+		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
+		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
+	</source>
+	<source>
 		<name>Queud</name>
 		<description>Description 1 Description 1 Description 1 Description 1 Description 1</description>
 		<thumb>http://s3.amazonaws.com/encoded-videos/187_55490.jpg</thumb>
@@ -31,17 +47,9 @@
 		<image>http://s3.amazonaws.com/encoded-videos/163_22591.jpg</image>
 		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Fanny-Judd.flv</file>
 	</source>
-	<source>
-		<name>Course Poursuite dans PARIS 2</name>
-		<description>Description 4</description>
-		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
-		<type>Video</type>
-		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
-		<file>http://s3.amazonaws.com/revelatr_videos/Blog-Malentendus-Combin-Mimoun.flv</file>
-	</source>
-	<source>
-		<name>Course Poursuite dans PARIS 3</name>
-		<description>Description 5</description>
+  <source>
+		<name>Test</name>
+		<description>Description</description>
 		<thumb>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</thumb>
 		<type>Video</type>
 		<image>http://s3.amazonaws.com/encoded-videos/292_88522.jpg</image>
